@@ -68,7 +68,7 @@ To Do List
 
 
 - WARP COMMAND<br/>
-  `[========>-]` 100% complete
+  `[=========>]` 100% complete
   - Create warp - **complete**
   - List warps (in world) - **complete**
   - Remove warps - **complete**
