@@ -14,12 +14,12 @@
 
     <distributionManagement>
         <repository>
-            <id>toolset-release</id>
-            <url>http://localhost:8081/artifactory/libs-release/</url>
+            <id>dropbox.repo</id>
+            <url>file:///P:/TeamCity-DropboxRepo/repository</url>
         </repository>
         <snapshotRepository>
-            <id>toolset-snapshot</id>
-            <url>http://localhost:8081/artifactory/libs-snapshot</url>
+            <id>dropbox.snapshotrepo</id>
+            <url>file:///P:/TeamCity-DropboxRepo/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
