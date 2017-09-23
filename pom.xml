@@ -15,11 +15,11 @@
     <distributionManagement>
         <repository>
             <id>dropbox.repo</id>
-            <url>file:///P:/TeamCity-DropboxRepo/repository</url>
+            <url>file:///P:/TeamCity-SiteRepo/repository</url>
         </repository>
         <snapshotRepository>
             <id>dropbox.snapshotrepo</id>
-            <url>file:///P:/TeamCity-DropboxRepo/snapshots</url>
+            <url>file:///P:/TeamCity-SiteRepo/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
