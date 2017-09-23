@@ -1,0 +1,17 @@
+Welcome to ToolSet!
+Here is a bit of a tutorial on how to use the config files for ToolSet.
+
+Each config file uses a language called Yaml (Yaml Ain't Markup Language). You can see how to use it at http://yaml.org/.
+
+Each command has a setting called 'enabled'. Setting this to TRUE (`enabled: true`) turns on the command. Setting this
+ to FALSE (`enabled: false`) will not start up (or disable if already running) the command.
+
+Most commands will also have a 'messages' setting. This has 3 different types of messages (player, broadcast and
+ console). Each message uses Minecraft colors, set with the '&' symbol (e.g. black is &0). The player message section
+ is the message that gets sent to the player when that message gets used. The broadcast message gets sent to everyone
+ BUT the player, and the console message gets sent to the server console.
+
+Commands can also have special options, which have help inside that command's main options section.
+
+Each command has a separate file, with its specific settings inside. Removing a key from this file will set it back to
+ its default value. Deleting this file will re-create it with default values on reloading the plugin.
