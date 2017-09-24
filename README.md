@@ -24,6 +24,21 @@ If you don't want to make plugins, of course you can work on ToolSet too. Just
 fork the repo, create whatever you want and submit a pull request. Policy
 coming soon.
 
+### Maven repository
+It costs too much to host our Maven repo on a proper server so it's currently
+hosted @ zndevs.zoweb.me. So, it is slow to download (and upload) files from
+it. Want it to be faster? You can't currently donate so if you have your own
+Maven repo that we can use that would be cool. We also build our stuff using
+TeamCity so if you have a server that can run that, that would be awesome too.
+
+#### What is the URL?
+
+Stick this into the repository URL option in Maven:
+
+`http://zndevs.zoweb.me/repository/repository`
+
+Then you can use ToolSet's API!
+
 Wiki
 ----
 
