@@ -17,5 +17,7 @@ commands:
     description: Reloads ToolSet
   toolset-update:
     description: Updates ToolSet
+  toolset-command:
+    description: Enable and disable ToolSet commands
   toolset:
     description: Main ToolSet command

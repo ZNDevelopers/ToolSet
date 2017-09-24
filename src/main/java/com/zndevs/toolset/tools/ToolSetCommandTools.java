@@ -2,6 +2,7 @@ package com.zndevs.toolset.tools;
 
 import com.zndevs.toolset.ToolSetCommand;
 import com.zndevs.toolset.ToolSetConfiguration;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,16 +22,15 @@ public class ToolSetCommandTools {
     public static final Map<String, JavaPlugin> toolSetPlugins = new HashMap<>();
     
     /**
-            * Disables a plugin's command
-            *
-            * @param commandPlugin The command's plugin
-            * @param command       The command name
+      * Disables a plugin's command
+      *
+      * @param command The command name
      */
-    public static void disableCommand(JavaPlugin commandPlugin, String command) throws NoSuchFieldException, IllegalAccessException {
-        final Field field = commandPlugin.getServer().getClass().getDeclaredField("commandMap");
+    public static void disableCommand(String command) throws NoSuchFieldException, IllegalAccessException {
+        final Field field = Bukkit.getPluginManager().getClass().getDeclaredField("commandMap");
         field.setAccessible(true);
-        CommandMap map = (CommandMap) field.get(commandPlugin.getServer());
-        commandPlugin.getCommand(command).unregister(map);
+        CommandMap map = (CommandMap) field.get(Bukkit.getPluginManager());
+        Bukkit.getPluginCommand(command).unregister(map);
     }
 
     /**
@@ -66,7 +66,7 @@ public class ToolSetCommandTools {
         if (pluginConfig.getBoolean("enabled")) {
             plugin.getLogger().info("Disabling command \"" + command + "\"");
             try {
-                disableCommand(commandPlugin, command);
+                disableCommand(command);
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -81,7 +81,7 @@ public class ToolSetCommandTools {
         } else {
             plugin.getLogger().info("Disabling command \"" + command + "\"");
             try {
-                disableCommand(commandPlugin, command);
+                disableCommand(command);
             } catch (IllegalAccessException | NoSuchFieldException e) {
                 plugin.getLogger().severe("Could not disable command \"" + command + "\": " + e.getMessage());
             }
@@ -132,7 +132,7 @@ public class ToolSetCommandTools {
             JavaPlugin plugin = commandPlugins.get(key);
 
             try {
-                disableCommand(plugin, key);
+                disableCommand(key);
                 plugin.getLogger().info("Disabled \"" + key + "\"");
             } catch (IllegalAccessException | NoSuchFieldException e) {
                 plugin.getLogger().severe("Could not disable command \"" + key + "\": " + e.getMessage());

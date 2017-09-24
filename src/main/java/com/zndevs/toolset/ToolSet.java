@@ -1,8 +1,10 @@
 package com.zndevs.toolset;
 
+import com.zndevs.toolset.commands.ToolSetCommandCommand;
 import com.zndevs.toolset.commands.ToolSetMainCommand;
 import com.zndevs.toolset.commands.ToolSetReloadCommand;
 import com.zndevs.toolset.commands.ToolSetUpdateCommand;
+import com.zndevs.toolset.events.ToolSetJoinEvent;
 import com.zndevs.toolset.tools.*;
 import com.zndevs.toolset.updater.CommandUpdateVersions;
 import com.zndevs.toolset.updater.ToolSetUpdater;
@@ -35,17 +37,22 @@ public class ToolSet extends JavaPlugin {
     @Override
     public void onEnable() {
         // ToolSet has been enabled! Now for some checks
+        getLogger().info("*** ToolSet by ZNDevelopers ***");
 
         // Because we're debugging, we'll set this to Localhost
-        ToolSetOptions.toolSetApiPath = "http://localhost/web/toolset/";
+        ToolSetOptions.toolSetApiPath = "http://192.168.1.29/web/toolset/";
 
         ToolSetOptions.setPlugin(this);
 
         // Add to list of plugins
-        ToolSetCommandTools.registerIfEnabled(this, "toolset-reload", new ToolSetReloadCommand());
-        ToolSetCommandTools.registerIfEnabled(this, "toolset-update", new ToolSetUpdateCommand());
-        ToolSetCommandTools.registerIfEnabled(this, "toolset",        new ToolSetMainCommand());
+        ToolSetCommandTools.registerIfEnabled(this, "toolset-reload",  new ToolSetReloadCommand());
+        ToolSetCommandTools.registerIfEnabled(this, "toolset-update",  new ToolSetUpdateCommand());
+        ToolSetCommandTools.registerIfEnabled(this, "toolset-command", new ToolSetCommandCommand());
+        ToolSetCommandTools.registerIfEnabled(this, "toolset",         new ToolSetMainCommand());
         ToolSetCommandTools.addPlugin("ToolSet Core", this);
+
+        // Add event listeners
+        getServer().getPluginManager().registerEvents(new ToolSetJoinEvent(), this);
 
         try {
             // Create the 'how to use config files' file
@@ -99,12 +106,6 @@ public class ToolSet extends JavaPlugin {
             e.printStackTrace();
         } catch (ParseException e) {
             getLogger().warning("An unknown error occurred while parsing the updater data:");
-            e.printStackTrace();
-        }
-
-        try {
-            System.out.println(Bukkit.class.getDeclaredField("commandMap"));
-        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
 
