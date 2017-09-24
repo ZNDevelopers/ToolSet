@@ -85,6 +85,7 @@ public class ToolSetUpdateCommand implements ToolSetCommand {
                             .append(") can be updated to v")
                             .append(currentVersion.getNewVersion());
                 }
+                if (updatesRequired.isEmpty()) updates.append(" &aToolSet is up to date.");
                 response.setPlayerMessage(updates.toString());
             } catch (IOException e) {
                 response.setPlayerMessage(ToolSetOptions.errorPrefix + "An unknown error occurred while checking for updates. Please check the console for more information.");

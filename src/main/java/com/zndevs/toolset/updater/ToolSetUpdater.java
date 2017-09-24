@@ -1,6 +1,5 @@
 package com.zndevs.toolset.updater;
 
-import com.zndevs.toolset.ToolSetCommand;
 import com.zndevs.toolset.tools.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONArray;
@@ -23,8 +22,7 @@ public class ToolSetUpdater {
     private JSONArray serverJsonData;
 
     public List<CommandUpdateVersions> checkForUpdates() throws IOException, ParseException {
-        List<CommandUpdateVersions> pluginMap = new ArrayList<CommandUpdateVersions>();
-        CommandResponse response = new CommandResponse();
+        List<CommandUpdateVersions> pluginMap = new ArrayList<>();
 
         // Get 'official' plugin data
         URLDownloader urlDownloader = new URLDownloader();
