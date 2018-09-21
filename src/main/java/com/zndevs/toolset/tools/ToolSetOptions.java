@@ -33,17 +33,16 @@ public class ToolSetOptions {
     /* DEBUG MODE OPTIONS. DO NOT CHANGE UNLESS DEBUGGING */
     /**
      * ToolSet API URL.
-     * If you have a local copy of the ToolSet website, change this to its URL
-     * This will probably only apply for ZNDevs because only they have a local
-     * copy of the website.
+     * If you have a local copy of the ToolSet website for debugging, set the TOOLSET_API environment variable.
      */
-    public static String toolSetApiPath = "http://zndevs.zoweb.me/toolset/";
+    public static String toolSetApiPath;
     /**
      * Get public API url
      */
     public static String getToolSetApiPath(String file) {
         return toolSetApiPath + file;
     }
+    /* END DEBUG MODE OPTIONS. */
 
 
     /**

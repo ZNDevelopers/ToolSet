@@ -5,10 +5,12 @@ import com.zndevs.toolset.commands.ToolSetMainCommand;
 import com.zndevs.toolset.commands.ToolSetReloadCommand;
 import com.zndevs.toolset.commands.ToolSetUpdateCommand;
 import com.zndevs.toolset.events.ToolSetJoinEvent;
-import com.zndevs.toolset.tools.*;
+import com.zndevs.toolset.tools.CommandResponse;
+import com.zndevs.toolset.tools.ConfigurationTools;
+import com.zndevs.toolset.tools.ToolSetCommandTools;
+import com.zndevs.toolset.tools.ToolSetOptions;
 import com.zndevs.toolset.updater.CommandUpdateVersions;
 import com.zndevs.toolset.updater.ToolSetUpdater;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.parser.ParseException;
 
@@ -39,8 +41,9 @@ public class ToolSet extends JavaPlugin {
         // ToolSet has been enabled! Now for some checks
         getLogger().info("*** ToolSet by ZNDevelopers ***");
 
-        // Because we're debugging, we'll set this to Localhost
-        ToolSetOptions.toolSetApiPath = "http://192.168.1.29/web/toolset/";
+        // Set API path to TOOLSET_API environment variable, or default http://zndevs.zoweb.me/toolset/
+        ToolSetOptions.toolSetApiPath = System.getenv("TOOLSET_API");
+        if (ToolSetOptions.toolSetApiPath == null) ToolSetOptions.toolSetApiPath = "http://zndevs.zoweb.me/toolset/";
 
         ToolSetOptions.setPlugin(this);
 
