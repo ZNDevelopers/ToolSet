@@ -1,6 +1,6 @@
 name: ToolSet
 main: com.zndevs.toolset.ToolSet
-version: alpha-0.2.0
+version: 1.2.1
 
 description: Modularly enhance your Spigot Server
 
