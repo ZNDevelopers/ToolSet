@@ -1,0 +1,29 @@
+language: java
+
+before_deploy: maven dokka:dokka dokka:javadoc
+deploy:
+  - provider: script
+    script: cp .travis.settings.xml $HOME/.m2/settings.xml && maven deploy
+    skip_cleanup: true
+    api_key:
+      secure: BRtUJO3SCsrTOZfXfGNncb+HbP5vK1uSKED0GsaKuzODO0WH4e4yW/GQmY1Do3uuDY+2PypJAErf/ceQtN7MabJh/srJQUq5v+DScpybDqSWpxxU9SxwkCooRFzEoHrn0mb5sUPMgWN5DE89D5HN1vZgH9gQYR8euWe0XtFSelw1ZxVaDqDt43AajoDSPGrn2+WqeSHmv6MKTugKvQxA9bcPK9KC4r380J5P/PgFt0Md2BiRHq4dUZbhpapeAYxw01amYRFP/h+xn9AFvDdgni1z9+i9/lYpIVoFcARIyFBq2Jk0HsOc4B5T2gxJoAPpmHPDeWJZ1VKbYeqOIksJAdhKAV/nN8MLyTccT+16zT2742Y+DfFhmXz+U6djRkC5VEYZNNosCEINv2qLWVjLVYNKtrwmtsjyvfj3PgiON+0lHcGx/P8DiZlZfr71BFSu/VtqU+4+zLgjf9mgUTQtqrq+zvC5Ml8bLzOTaNsJ3e5W1RZpowLk4a/rK16yLvYEwic5xFvQlgL/TdUEhY8W/Wl7OgIC4cT4tQN4Z4/KVzm0FrO6zZdKeL5U+4L8rEcMKG8eWpRe/ZGQFtkNFpuhYbWA57/dXNXndGmklJbQ2TBBaBsPzRtPOEnPQ9PG7TeN9xxxmi6utD7SvPcD4lCD3TuoOkNGFL5AnZAJM+F6qzc=
+    on:
+      tags: true
+      branch: master
+  - provider: releases
+    file: target/ToolSet-jar-with-dependencies.jar
+    skip_cleanup: true
+    api_key:
+      secure: N9h5v++TJOYPg8j+jeT+PCYCArJ/1I/0VkLZ7BznV96J4UaXwtsjJFPD6TT+XIFsuCWQTnb60RfAVSFzLMMwhB6z8QQOkHhVO7UBvabiROHESeqCsWumWQRtSMJoVXoUlDBaehM+rv42YX2Do2Y5rUfE5JTY9Y9M4oVNnz3/j3kxakkjz5LhSvfAjA2RRn/93lBaYjsUkoRuSW7KWPkBFVQGy17UyGpNm5Mzf0R21RhnSVO9P5XvHtAOfgM3ZkRNTrHzVp7XiyyoxZbgjwy51L6LM5jUu95b8OLp+LSWPxQiE2cMrlMef9cJNnAAu8U/2dP7RIBwCxnC0yCjoquZ8jngTBbvoOBRmwtQQ13f1M1XnjnGduwo+4jRA42Z6Eb8d62GqltzHcTr4/zmZBFQHOt0baGHiT19tTOidl91nlLij+mbkNcmfpzsWRMSRS8galB0qGi4yATVXbSz/KR+pIa4pUGTDDq5avioAG/X7WcaeCQ7Yg8HLozg3Gj3xUJEi/05vrz2irwviLZDoH7peIwe3i7vQ9YfO6O4CkT8CbDbHnqBkMmvls2J37G9yHlHw+TMqD+H+9dZuTazx9O2Q/+TP09vQjeM2qojuUfDecG/kjZydc3idamYHDkJc7sdy7scQMNH43bl5JDqqZ8lH/qhwV82RgRjV6fOmCeaC30=
+    on:
+      tags: true
+      branch: master
+  - provider: pages
+    skip_cleanup: true
+    keep-history: true
+    local-dir: target/dokkaJavadoc
+    on:
+      branch: master
+
+env:
+  secure: KwS+OaXF+BCVwECu3rq+ewCnxxjeJknNkLCMZnY2YD4YreE+pSi0iuYedDZMT8OoPvMFhLRPxREmyHpK/oj43IMToY8SZVkSzcV7D8n+AllvaipWkc6mKQzM2X4cMHEIV+ENNMhButEZ+2nrphNCiaaQ5UHS1qMWXCwMFOCwHWXAC6CI5vaJGDd3OkbL2u8fS8p0wAlcnYG/Jqtd19khvF36J6JKwWP/XwNXvphWBzZOAuw6b8uxVN3yeyaqeMKTG6BQ41WwxFJIjd5MKQgM6Yh8UrwOhFla7yx5j21f/25MZeryGyZoP6taawt4QxNuAT6NXNFq5Md/IyFAd4aTlRO3wJHf/lG1BOASRUcskjIHdo0a93vID5vbFdlZlK7phrvqZlS7n8wclVX3tYVUd9e8h0gj8LUsb9MBSOjDBj7LxrwAfuVXMVt5FqiWcDR7lH254vAthocgZcgBx4LU4BXpdW2iKMwRRQqVPVwJSPFFdA3cF4kKlvWIwjn+8IBQukAQja8pwQtp13RHaDJiWHdlxdssG19eBKTOsNz7QChLdEDK9o+sDhC3x65kFRdsMMvDuvrWzdNg5NT5KqHbR7ETX82KUyZLiRU1RLHVCs9tyjmK6VNCHV8/9RxxDJnr3zGwuJ9jZ8lE9Ctnv2rgocV7mf3jz3ba+9sswBuTQzQ=

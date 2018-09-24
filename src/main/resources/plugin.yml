@@ -1,6 +1,6 @@
 name: ToolSet
 main: com.zndevs.toolset.ToolSet
-version: alpha-0.2.0
+version: 2.0.0-SNAPSHOT
 
 description: Modularly enhance your Spigot Server
 
@@ -13,11 +13,5 @@ depend: []
 loadbefore: []
 
 commands:
-  toolset-reload:
-    description: Reloads ToolSet
-  toolset-update:
-    description: Updates ToolSet
-  toolset-command:
-    description: Enable and disable ToolSet commands
   toolset:
-    description: Main ToolSet command
+    description: ToolSet Base plugin controller
