@@ -93,7 +93,7 @@ class ToolSetUpdateCommand : ToolSetCommand() {
             Files.write(tempUpdaterPath.toPath(), updaterBytes)
 
             // also create information file to say what to update
-            val infoFile = File(ToolSetOptions.plugin?.dataFolder, "updates.toolset.dat")
+            val infoFile = File(ToolSetOptions.plugin?.dataFolder, "../updates.toolset.dat")
 
             PrintWriter(infoFile).use {
                 for (update in requiredUpdates) {
