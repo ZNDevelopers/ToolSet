@@ -2,14 +2,14 @@ language: java
 
 before_deploy: mvn dokka:dokka dokka:javadoc
 deploy:
-  - provider: script
-    script: cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy
-    skip_cleanup: true
-    api_key:
-      secure: BRtUJO3SCsrTOZfXfGNncb+HbP5vK1uSKED0GsaKuzODO0WH4e4yW/GQmY1Do3uuDY+2PypJAErf/ceQtN7MabJh/srJQUq5v+DScpybDqSWpxxU9SxwkCooRFzEoHrn0mb5sUPMgWN5DE89D5HN1vZgH9gQYR8euWe0XtFSelw1ZxVaDqDt43AajoDSPGrn2+WqeSHmv6MKTugKvQxA9bcPK9KC4r380J5P/PgFt0Md2BiRHq4dUZbhpapeAYxw01amYRFP/h+xn9AFvDdgni1z9+i9/lYpIVoFcARIyFBq2Jk0HsOc4B5T2gxJoAPpmHPDeWJZ1VKbYeqOIksJAdhKAV/nN8MLyTccT+16zT2742Y+DfFhmXz+U6djRkC5VEYZNNosCEINv2qLWVjLVYNKtrwmtsjyvfj3PgiON+0lHcGx/P8DiZlZfr71BFSu/VtqU+4+zLgjf9mgUTQtqrq+zvC5Ml8bLzOTaNsJ3e5W1RZpowLk4a/rK16yLvYEwic5xFvQlgL/TdUEhY8W/Wl7OgIC4cT4tQN4Z4/KVzm0FrO6zZdKeL5U+4L8rEcMKG8eWpRe/ZGQFtkNFpuhYbWA57/dXNXndGmklJbQ2TBBaBsPzRtPOEnPQ9PG7TeN9xxxmi6utD7SvPcD4lCD3TuoOkNGFL5AnZAJM+F6qzc=
-    on:
-      tags: true
-      branch: master
+#  - provider: script
+#    script: cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy
+#    skip_cleanup: true
+#    api_key:
+#      secure: BRtUJO3SCsrTOZfXfGNncb+HbP5vK1uSKED0GsaKuzODO0WH4e4yW/GQmY1Do3uuDY+2PypJAErf/ceQtN7MabJh/srJQUq5v+DScpybDqSWpxxU9SxwkCooRFzEoHrn0mb5sUPMgWN5DE89D5HN1vZgH9gQYR8euWe0XtFSelw1ZxVaDqDt43AajoDSPGrn2+WqeSHmv6MKTugKvQxA9bcPK9KC4r380J5P/PgFt0Md2BiRHq4dUZbhpapeAYxw01amYRFP/h+xn9AFvDdgni1z9+i9/lYpIVoFcARIyFBq2Jk0HsOc4B5T2gxJoAPpmHPDeWJZ1VKbYeqOIksJAdhKAV/nN8MLyTccT+16zT2742Y+DfFhmXz+U6djRkC5VEYZNNosCEINv2qLWVjLVYNKtrwmtsjyvfj3PgiON+0lHcGx/P8DiZlZfr71BFSu/VtqU+4+zLgjf9mgUTQtqrq+zvC5Ml8bLzOTaNsJ3e5W1RZpowLk4a/rK16yLvYEwic5xFvQlgL/TdUEhY8W/Wl7OgIC4cT4tQN4Z4/KVzm0FrO6zZdKeL5U+4L8rEcMKG8eWpRe/ZGQFtkNFpuhYbWA57/dXNXndGmklJbQ2TBBaBsPzRtPOEnPQ9PG7TeN9xxxmi6utD7SvPcD4lCD3TuoOkNGFL5AnZAJM+F6qzc=
+#    on:
+#      tags: true
+#      branch: master
   - provider: releases
     file: target/ToolSet-jar-with-dependencies.jar
     skip_cleanup: true
