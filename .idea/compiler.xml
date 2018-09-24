@@ -9,8 +9,5 @@
         <module name="ToolSet" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ToolSet" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
