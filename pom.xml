@@ -35,6 +35,13 @@
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>ftp-repo</id>
+            <url>ftp://ftp.zoweb.me/repository/</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>spigot</id>
@@ -113,6 +120,8 @@
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
 
+        <finalName>ToolSet</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -169,6 +178,15 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <extensions>
+            <!-- Enable FTP -->
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>3.1.0</version>
+            </extension>
+        </extensions>
     </build>
 
 </project>
