@@ -1,0 +1,9 @@
+$dokka.format:jekyll
+$dokka.linkExtension:html
+
+com.zndevs.toolset
+com.zndevs.toolset.commands
+com.zndevs.toolset.commands.tools
+com.zndevs.toolset.events
+com.zndevs.toolset.tools
+com.zndevs.toolset.updater
